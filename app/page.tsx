@@ -1,66 +1,74 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use server";
+import ProductoCard from "./components/Product/ProductoCard";
+import prisma from "@/prisma/prisma";
+import { Pagination } from 'react-bootstrap'; // Importar componente
+import Link from 'next/link';
 
-export default function Home() {
+type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>
+
+export default async function Home(props: { searchParams: SearchParams }) {
+
+  const searchParams = await props.searchParams;
+  const page = Number(searchParams.page) || 1;
+  const pageSize = 3;
+  const skip = (page - 1) * pageSize;
+
+  // Ejecutamos ambas consultas para obtener datos y el total
+  const [productos, totalProductos] = await Promise.all([
+    prisma.producto.findMany({
+      include: { categeoria: true },
+      skip: skip,
+      take: pageSize
+    }),
+    prisma.producto.count()
+  ]);
+
+  const totalPages = Math.ceil(totalProductos / pageSize);
+
+  // Simulación de carga
+  await new Promise(resolve => setTimeout(resolve, 500))
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      <main className="container-fluid px-4 px-md-5 py-5 mt-4" style={{ maxWidth: '1400px' }}>
+        <div className="row gy-5 gx-md-5 justify-content-center">
+          {productos.map((producto) => (
+            <div key={producto.id} className="col-11 col-md-5 col-lg-4 col-xl-3">
+              <ProductoCard producto={producto} />
+            </div>
+          ))}
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+
+        {/* Componente Paginador corregido */}
+        {totalPages > 1 && (
+          <div className="d-flex justify-content-center mt-5">
+            <Pagination>
+              <li className={`page-item ${page <= 1 ? 'disabled' : ''}`}>
+                <Link className="page-link" href={`/?page=${page - 1}`}>
+                  &laquo; Anterior
+                </Link>
+              </li>
+              
+              {[...Array(totalPages)].map((_, i) => {
+                const pageNum = i + 1;
+                return (
+                  <li key={pageNum} className={`page-item ${page === pageNum ? 'active' : ''}`}>
+                    <Link className="page-link" href={`/?page=${pageNum}`}>
+                      {pageNum}
+                    </Link>
+                  </li>
+                );
+              })}
+
+              <li className={`page-item ${page >= totalPages ? 'disabled' : ''}`}>
+                <Link className="page-link" href={`/?page=${page + 1}`}>
+                  Siguiente &raquo;
+                </Link>
+              </li>
+            </Pagination>
+          </div>
+        )}
       </main>
-    </div>
+    </>
   );
 }

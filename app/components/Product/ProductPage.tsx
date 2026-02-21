@@ -8,9 +8,18 @@ interface Props {
   producto: Producto & { categeoria: Categoria };
 }
 
+
+
 export default function ProductoDetalle({ producto }: Props) {
   const router = useRouter();
+  const getStockStatus = (count: number) => {
+    if (count <= 0) return { color: 'text-danger', label: 'Agotado' };
+    if (count < 2) return { color: 'text-danger', label: '¡Última unidad disponible!' };
+    if (count < 5) return { color: 'text-warning', label: 'Pocas unidades disponibles' };
+    return { color: 'text-success', label: 'En stock' };
+  };
 
+const stock = getStockStatus(producto.inventario);
   return (
     <Container className="py-5 mt-5 text-white">
       {/* Botón Volver */}
@@ -48,6 +57,16 @@ export default function ProductoDetalle({ producto }: Props) {
           <h2 className="text-primary fs-1 fw-light mb-4">
             {formatPrecio(producto.precio)}
           </h2>
+          <div className={`d-flex align-items-center small fw-bold mb-4 ${stock.color}`}>
+            <span 
+              className="spinner-grow spinner-grow-sm me-2" 
+              role="status" 
+              style={{ animationDuration: '1.5s' }}
+            ></span>
+            <span className="text-uppercase" style={{ letterSpacing: '0.5px' }}>
+              {stock.label} ({producto.inventario} unidades)
+            </span>
+          </div>
 
           <div className="border-top border-secondary opacity-25 my-4"></div>
 

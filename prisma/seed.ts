@@ -42,6 +42,7 @@ async function main(){
         categoriaId: calzado.id,
         imagen: "https://images.unsplash.com/photo-1542291026-7eec264c27ff",
         slug: "nike-free",
+        inventario: 10,
         },
         {
         id: "2",
@@ -52,6 +53,7 @@ async function main(){
         categoriaId: calzado.id,
         imagen: "https://images.unsplash.com/photo-1599571720388-1a7b15206466",
         slug: "nike-athletic",
+        inventario: 5,
         },
         {
         id: "3",
@@ -62,6 +64,7 @@ async function main(){
         categoriaId: playeras.id,
         imagen: "https://images.unsplash.com/photo-1554568218-0f1715e72254",
         slug: "camiseta-estampada-mujer",
+        inventario: 2,
         },
         {
         id: "4",
@@ -72,6 +75,7 @@ async function main(){
         categoriaId: playeras.id,
         imagen: "https://images.unsplash.com/photo-1627225924765-552d49cf47ad",
         slug: "camiseta-estampada-hombre",
+        inventario: 4,
         },
         {
         id: "5",
@@ -82,6 +86,7 @@ async function main(){
         categoriaId: mochilas.id,
         imagen: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62",
         slug: "mochila-azul",
+        inventario: 1,
         },
     ];
 

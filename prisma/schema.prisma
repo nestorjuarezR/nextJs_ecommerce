@@ -1,6 +1,5 @@
 generator client {
   provider = "prisma-client-js"
-  output   = "../app/generated/prima"
 }
 
 datasource db {
@@ -17,6 +16,7 @@ model Producto {
   imagen      String
   slug        String    @unique
   categeoria  Categoria @relation(fields: [categoriaId], references: [id])
+  inventario  Int @default(0)
 }
 
 model Categoria {

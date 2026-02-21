@@ -972,10 +972,12 @@ export namespace Prisma {
 
   export type ProductoAvgAggregateOutputType = {
     precio: number | null
+    inventario: number | null
   }
 
   export type ProductoSumAggregateOutputType = {
     precio: number | null
+    inventario: number | null
   }
 
   export type ProductoMinAggregateOutputType = {
@@ -986,6 +988,7 @@ export namespace Prisma {
     precio: number | null
     imagen: string | null
     slug: string | null
+    inventario: number | null
   }
 
   export type ProductoMaxAggregateOutputType = {
@@ -996,6 +999,7 @@ export namespace Prisma {
     precio: number | null
     imagen: string | null
     slug: string | null
+    inventario: number | null
   }
 
   export type ProductoCountAggregateOutputType = {
@@ -1006,16 +1010,19 @@ export namespace Prisma {
     precio: number
     imagen: number
     slug: number
+    inventario: number
     _all: number
   }
 
 
   export type ProductoAvgAggregateInputType = {
     precio?: true
+    inventario?: true
   }
 
   export type ProductoSumAggregateInputType = {
     precio?: true
+    inventario?: true
   }
 
   export type ProductoMinAggregateInputType = {
@@ -1026,6 +1033,7 @@ export namespace Prisma {
     precio?: true
     imagen?: true
     slug?: true
+    inventario?: true
   }
 
   export type ProductoMaxAggregateInputType = {
@@ -1036,6 +1044,7 @@ export namespace Prisma {
     precio?: true
     imagen?: true
     slug?: true
+    inventario?: true
   }
 
   export type ProductoCountAggregateInputType = {
@@ -1046,6 +1055,7 @@ export namespace Prisma {
     precio?: true
     imagen?: true
     slug?: true
+    inventario?: true
     _all?: true
   }
 
@@ -1143,6 +1153,7 @@ export namespace Prisma {
     precio: number
     imagen: string
     slug: string
+    inventario: number
     _count: ProductoCountAggregateOutputType | null
     _avg: ProductoAvgAggregateOutputType | null
     _sum: ProductoSumAggregateOutputType | null
@@ -1172,6 +1183,7 @@ export namespace Prisma {
     precio?: boolean
     imagen?: boolean
     slug?: boolean
+    inventario?: boolean
     categeoria?: boolean | CategoriaDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["producto"]>
 
@@ -1183,6 +1195,7 @@ export namespace Prisma {
     precio?: boolean
     imagen?: boolean
     slug?: boolean
+    inventario?: boolean
     categeoria?: boolean | CategoriaDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["producto"]>
 
@@ -1194,6 +1207,7 @@ export namespace Prisma {
     precio?: boolean
     imagen?: boolean
     slug?: boolean
+    inventario?: boolean
   }
 
   export type ProductoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1216,6 +1230,7 @@ export namespace Prisma {
       precio: number
       imagen: string
       slug: string
+      inventario: number
     }, ExtArgs["result"]["producto"]>
     composites: {}
   }
@@ -1617,6 +1632,7 @@ export namespace Prisma {
     readonly precio: FieldRef<"Producto", 'Float'>
     readonly imagen: FieldRef<"Producto", 'String'>
     readonly slug: FieldRef<"Producto", 'String'>
+    readonly inventario: FieldRef<"Producto", 'Int'>
   }
     
 
@@ -2894,7 +2910,8 @@ export namespace Prisma {
     categoriaId: 'categoriaId',
     precio: 'precio',
     imagen: 'imagen',
-    slug: 'slug'
+    slug: 'slug',
+    inventario: 'inventario'
   };
 
   export type ProductoScalarFieldEnum = (typeof ProductoScalarFieldEnum)[keyof typeof ProductoScalarFieldEnum]
@@ -2994,6 +3011,7 @@ export namespace Prisma {
     precio?: FloatFilter<"Producto"> | number
     imagen?: StringFilter<"Producto"> | string
     slug?: StringFilter<"Producto"> | string
+    inventario?: IntFilter<"Producto"> | number
     categeoria?: XOR<CategoriaScalarRelationFilter, CategoriaWhereInput>
   }
 
@@ -3005,6 +3023,7 @@ export namespace Prisma {
     precio?: SortOrder
     imagen?: SortOrder
     slug?: SortOrder
+    inventario?: SortOrder
     categeoria?: CategoriaOrderByWithRelationInput
   }
 
@@ -3019,6 +3038,7 @@ export namespace Prisma {
     categoriaId?: StringFilter<"Producto"> | string
     precio?: FloatFilter<"Producto"> | number
     imagen?: StringFilter<"Producto"> | string
+    inventario?: IntFilter<"Producto"> | number
     categeoria?: XOR<CategoriaScalarRelationFilter, CategoriaWhereInput>
   }, "id" | "slug">
 
@@ -3030,6 +3050,7 @@ export namespace Prisma {
     precio?: SortOrder
     imagen?: SortOrder
     slug?: SortOrder
+    inventario?: SortOrder
     _count?: ProductoCountOrderByAggregateInput
     _avg?: ProductoAvgOrderByAggregateInput
     _max?: ProductoMaxOrderByAggregateInput
@@ -3048,6 +3069,7 @@ export namespace Prisma {
     precio?: FloatWithAggregatesFilter<"Producto"> | number
     imagen?: StringWithAggregatesFilter<"Producto"> | string
     slug?: StringWithAggregatesFilter<"Producto"> | string
+    inventario?: IntWithAggregatesFilter<"Producto"> | number
   }
 
   export type CategoriaWhereInput = {
@@ -3102,6 +3124,7 @@ export namespace Prisma {
     precio: number
     imagen: string
     slug: string
+    inventario?: number
     categeoria: CategoriaCreateNestedOneWithoutProductosInput
   }
 
@@ -3113,6 +3136,7 @@ export namespace Prisma {
     precio: number
     imagen: string
     slug: string
+    inventario?: number
   }
 
   export type ProductoUpdateInput = {
@@ -3122,6 +3146,7 @@ export namespace Prisma {
     precio?: FloatFieldUpdateOperationsInput | number
     imagen?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
+    inventario?: IntFieldUpdateOperationsInput | number
     categeoria?: CategoriaUpdateOneRequiredWithoutProductosNestedInput
   }
 
@@ -3133,6 +3158,7 @@ export namespace Prisma {
     precio?: FloatFieldUpdateOperationsInput | number
     imagen?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
+    inventario?: IntFieldUpdateOperationsInput | number
   }
 
   export type ProductoCreateManyInput = {
@@ -3143,6 +3169,7 @@ export namespace Prisma {
     precio: number
     imagen: string
     slug: string
+    inventario?: number
   }
 
   export type ProductoUpdateManyMutationInput = {
@@ -3152,6 +3179,7 @@ export namespace Prisma {
     precio?: FloatFieldUpdateOperationsInput | number
     imagen?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
+    inventario?: IntFieldUpdateOperationsInput | number
   }
 
   export type ProductoUncheckedUpdateManyInput = {
@@ -3162,6 +3190,7 @@ export namespace Prisma {
     precio?: FloatFieldUpdateOperationsInput | number
     imagen?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
+    inventario?: IntFieldUpdateOperationsInput | number
   }
 
   export type CategoriaCreateInput = {
@@ -3251,6 +3280,17 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
   export type CategoriaScalarRelationFilter = {
     is?: CategoriaWhereInput
     isNot?: CategoriaWhereInput
@@ -3269,10 +3309,12 @@ export namespace Prisma {
     precio?: SortOrder
     imagen?: SortOrder
     slug?: SortOrder
+    inventario?: SortOrder
   }
 
   export type ProductoAvgOrderByAggregateInput = {
     precio?: SortOrder
+    inventario?: SortOrder
   }
 
   export type ProductoMaxOrderByAggregateInput = {
@@ -3283,6 +3325,7 @@ export namespace Prisma {
     precio?: SortOrder
     imagen?: SortOrder
     slug?: SortOrder
+    inventario?: SortOrder
   }
 
   export type ProductoMinOrderByAggregateInput = {
@@ -3293,10 +3336,12 @@ export namespace Prisma {
     precio?: SortOrder
     imagen?: SortOrder
     slug?: SortOrder
+    inventario?: SortOrder
   }
 
   export type ProductoSumOrderByAggregateInput = {
     precio?: SortOrder
+    inventario?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -3351,6 +3396,22 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
   export type ProductoListRelationFilter = {
     every?: ProductoWhereInput
     some?: ProductoWhereInput
@@ -3394,6 +3455,14 @@ export namespace Prisma {
   }
 
   export type FloatFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
     decrement?: number
@@ -3490,6 +3559,17 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -3505,17 +3585,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
-  }
-
-  export type NestedIntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -3560,6 +3629,22 @@ export namespace Prisma {
     _sum?: NestedFloatFilter<$PrismaModel>
     _min?: NestedFloatFilter<$PrismaModel>
     _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type CategoriaCreateWithoutProductosInput = {
@@ -3609,6 +3694,7 @@ export namespace Prisma {
     precio: number
     imagen: string
     slug: string
+    inventario?: number
   }
 
   export type ProductoUncheckedCreateWithoutCategeoriaInput = {
@@ -3618,6 +3704,7 @@ export namespace Prisma {
     precio: number
     imagen: string
     slug: string
+    inventario?: number
   }
 
   export type ProductoCreateOrConnectWithoutCategeoriaInput = {
@@ -3657,6 +3744,7 @@ export namespace Prisma {
     precio?: FloatFilter<"Producto"> | number
     imagen?: StringFilter<"Producto"> | string
     slug?: StringFilter<"Producto"> | string
+    inventario?: IntFilter<"Producto"> | number
   }
 
   export type ProductoCreateManyCategeoriaInput = {
@@ -3666,6 +3754,7 @@ export namespace Prisma {
     precio: number
     imagen: string
     slug: string
+    inventario?: number
   }
 
   export type ProductoUpdateWithoutCategeoriaInput = {
@@ -3675,6 +3764,7 @@ export namespace Prisma {
     precio?: FloatFieldUpdateOperationsInput | number
     imagen?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
+    inventario?: IntFieldUpdateOperationsInput | number
   }
 
   export type ProductoUncheckedUpdateWithoutCategeoriaInput = {
@@ -3684,6 +3774,7 @@ export namespace Prisma {
     precio?: FloatFieldUpdateOperationsInput | number
     imagen?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
+    inventario?: IntFieldUpdateOperationsInput | number
   }
 
   export type ProductoUncheckedUpdateManyWithoutCategeoriaInput = {
@@ -3693,6 +3784,7 @@ export namespace Prisma {
     precio?: FloatFieldUpdateOperationsInput | number
     imagen?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
+    inventario?: IntFieldUpdateOperationsInput | number
   }
 
 

@@ -76,8 +76,13 @@ const stock = getStockStatus(producto.inventario);
           </p>
 
           <div className="mt-auto">
-            <Button size="lg" variant="primary" className="w-100 rounded-pill py-3 fw-bold shadow-sm">
-              Añadir al Carrito
+            <Button 
+              size="lg" 
+              variant="primary" 
+              className="w-100 rounded-pill py-3 fw-bold shadow-sm"
+              disabled={producto.inventario <= 0} // Se deshabilita si es 0
+            >
+              {producto.inventario > 0 ? 'Añadir al Carrito' : 'Agotado'}
             </Button>
             <p className="text-center text-secondary small mt-3">
               Envío gratuito en todos los pedidos superiores a $50
